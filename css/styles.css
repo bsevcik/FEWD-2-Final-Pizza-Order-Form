@@ -1,0 +1,27 @@
+body {
+    min-width: 400px;
+}
+
+.fa-pizza-slice {
+    color: red;
+}
+
+.jumbotron {
+    background: url("../assets/images/pizza.jpg");
+    background-size: 100%;
+}
+
+.jumbotron > .display-3, .jumbotron > .lead {
+    background-color: rgba(255,0,0,0.7);
+    border-radius: .3rem;
+    color: white
+}
+.btn-success {
+    background-color: rgba(255,0,0,0.7);
+/*    border-color: rgba(0,0,0,1);*/
+    border: none;
+}
+
+footer {
+    text-align: center;
+}
