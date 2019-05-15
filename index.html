@@ -111,7 +111,7 @@
     <label for="text" class="col-4 col-form-label">APT, STE, or Room Number</label> 
     <div class="col-8">
       <input id="text" name="text" type="text" class="form-control" aria-describedby="textHelpBlock"> 
-      <span id="textHelpBlock" class="form-text text-muted">optional</span>
+      <span id="textHelpBlock" class="form-text text-muted">*Optional Field</span>
     </div>
   </div>
   <div class="form-group row">
@@ -166,7 +166,7 @@
 </form>
      
 <!-- Dough and Size Form -->
-    <form>
+<form>
   <div class="form-group row">
     <label class="col-4 col-form-label">Dough</label> 
     <div class="col-8">
@@ -229,9 +229,81 @@
     <div class="col-8">
       <select id="glutenFreeSize" name="glutenFreeSize" class="custom-select">
         <option value="glutenFreeSmall">Small ($10.99)</option>
-        <option value="duck">Duck</option>
-        <option value="fish">Fish</option>
       </select>
+    </div>
+  </div> 
+
+   
+  <div class="form-group row">
+    <label for="cheeseOptions" class="col-4 col-form-label">Cheese Options</label> 
+    <div class="col-8">
+      <select id="cheese" name="cheese" class="custom-select">
+        <option value="light">Light: No Charge</option>
+        <option value="normal">Normal (default): No Charge</option>
+        <option value="extra">Extra: +$2.99</option>
+        <option value="double">Double: +3.99</option>
+      </select>
+    </div>
+  </div> 
+  <div class="form-group row">
+    <label for="sauceOptions" class="col-4 col-form-label">Cheese Options</label> 
+    <div class="col-8">
+      <select id="sauce" name="sauce" class="custom-select">
+        <option value="regularTomato">Regular Tomato: No Charge</option>
+        <option value="heartyTomato">Hearty Tomato: +$0.99</option>
+        <option value="bbq">BBQ Sauce: +$1.99</option>
+      </select>
+    </div>
+  </div>
+
+<div class="form-group row">
+    <label class="col-4">Additional Toppings (+$0.99 each)</label> 
+    <div class="col-8">
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input name="additionalToppings" id="additionalToppings_0" type="checkbox" class="custom-control-input" value="pepperoni"> 
+        <label for="additionalToppings_0" class="custom-control-label">Pepperoni</label>
+      </div>
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input name="additionalToppings" id="additionalToppings_1" type="checkbox" class="custom-control-input" value="Sausage"> 
+        <label for="additionalToppings_1" class="custom-control-label">Sausage</label>
+      </div>
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input name="additionalToppings" id="additionalToppings_2" type="checkbox" class="custom-control-input" value="ham"> 
+        <label for="additionalToppings_2" class="custom-control-label">Ham</label>
+      </div>
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input name="additionalToppings" id="additionalToppings_3" type="checkbox" class="custom-control-input" value="bacon"> 
+        <label for="additionalToppings_3" class="custom-control-label">Bacon</label>
+      </div>
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input name="additionalToppings" id="additionalToppings_4" type="checkbox" class="custom-control-input" value="salami"> 
+        <label for="additionalToppings_4" class="custom-control-label">Salami</label>
+      </div>
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input name="additionalToppings" id="additionalToppings_5" type="checkbox" class="custom-control-input" value="peppers"> 
+        <label for="additionalToppings_5" class="custom-control-label">Peppers</label>
+      </div>
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input name="additionalToppings" id="additionalToppings_6" type="checkbox" class="custom-control-input" value="olives"> 
+        <label for="additionalToppings_6" class="custom-control-label">Olives</label>
+      </div>
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input name="additionalToppings" id="additionalToppings_7" type="checkbox" class="custom-control-input" value="jalapenos"> 
+        <label for="additionalToppings_7" class="custom-control-label">Jalapenos</label>
+      </div>
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input name="additionalToppings" id="additionalToppings_8" type="checkbox" class="custom-control-input" value="mushrooms"> 
+        <label for="additionalToppings_8" class="custom-control-label">Mushrooms</label>
+      </div>
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input name="additionalToppings" id="additionalToppings_9" type="checkbox" class="custom-control-input" value="pineapple"> 
+        <label for="additionalToppings_9" class="custom-control-label">Pineapple</label>
+      </div>
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input name="additionalToppings" id="additionalToppings_10" type="checkbox" class="custom-control-input" value="onion"> 
+        <label for="additionalToppings_10" class="custom-control-label">Onion</label>
+      </div>
+
     </div>
   </div> 
   <div class="form-group row">

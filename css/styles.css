@@ -16,6 +16,9 @@ body {
     border-radius: .3rem;
     color: white
 }
+.custom-control-inline {
+    width: 92px;
+}
 .btn-success {
     background-color: rgba(255,0,0,0.7);
 /*    border-color: rgba(0,0,0,1);*/
