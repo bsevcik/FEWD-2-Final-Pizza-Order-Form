@@ -31,8 +31,16 @@ footer {
 .hidden {
     display: none;
 }
+/* First You change the display properties, then you make it visible. This ensures section 508 compliance, while also enabling css transitions! */
+.seeThrough {
+    opacity: 0;
+    height: 0px;
+}
 .runningTotalContainer {
     background: red;
     text-align: center;
     border-radius: 15px;
+}
+#cheeseOptionsContainer, #sauceOptionsContainer, #sizeOptionsContainer {
+    transition: height 2s;
 }
