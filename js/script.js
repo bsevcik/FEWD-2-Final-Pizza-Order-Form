@@ -2,6 +2,8 @@ var runningTotalVar = 0, selectedDough, previousDoughAndSize, previousDoughPickI
 
 function runningTotal() {
     // runningTotalVar = ; HAVE TO ADD THE OTHER TOTALS HERE
+    var sizePrice = priceOfSize();
+    runningTotalVar = sizePrice;
     document.getElementById("runningTotal").innerHTML = "$" + runningTotalVar;
 }
 
@@ -24,7 +26,7 @@ function priceOfSize() {
 
 function priceOfSauce() {
     var saucePrice = 0, placeholder;
-    
+
     previousDoughPickIndex
 }
 
@@ -62,7 +64,10 @@ function whichDoughPicked () {
         }
     }
     console.log(selectedDough);
+    runningTotal();
 }
+
+
 window.document.getElementById("doughRadioButtons").addEventListener("click", 
     function (e) {
         if (previousDoughPickIndex !== false && e.srcElement.id !== "") {
@@ -77,4 +82,10 @@ window.document.getElementById("doughRadioButtons").addEventListener("click",
             whichDoughPicked();
         }
     }
-)
+);
+
+window.document.getElementById("handTossedSize").addEventListener("click", 
+    function(e) {
+        console.log(e.srcElement);
+    }
+);
