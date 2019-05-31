@@ -44,13 +44,6 @@
                 >Home <span class="sr-only">(current)</span></a
               >
             </li>
-            <!--
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li> -->
           </ul>
         </nav>
         <h3 class="text-muted"><i class="fas fa-pizza-slice fa-2x"></i></h3>
@@ -97,7 +90,7 @@
 -->
 
       <!-- Delivery Form -->
-      <form>
+      <form id="deliveryForm">
         <div class="form-group row">
           <label for="name" class="col-4 col-form-label">Your Name</label>
           <div class="col-8">
@@ -233,7 +226,7 @@
       </form>
 
       <!-- Dough and Size Form -->
-      <form>
+      <form id="pizzaForm">
         <div class="form-group row">
           <label class="col-4 col-form-label">Dough</label>
           <div class="col-8" id="doughRadioButtons">
@@ -305,9 +298,9 @@
               name="handTossedSize"
               class="custom-select"
             >
-              <option value="handTossedSmall">Small ($9.99)</option>
-              <option value="handTossedMedium">Medium ($11.99)</option>
-              <option value="handTossedLarge">Large ($14.99)</option>
+              <option value="9.99">Small ($9.99)</option>
+              <option value="11.99">Medium ($11.99)</option>
+              <option value="14.99">Large ($14.99)</option>
             </select>
           </div>
         </div>
@@ -321,8 +314,8 @@
               name="thinCrustSize"
               class="custom-select"
             >
-              <option value="thinCrustMedium">Medium (11.99)</option>
-              <option value="thinCrustLarge">Large ($13.99)</option>
+              <option value="11.99">Medium (11.99)</option>
+              <option value="13.99">Large ($13.99)</option>
             </select>
           </div>
         </div>
@@ -332,8 +325,8 @@
           >
           <div class="col-8">
             <select id="newYorkStyleSize" name="newYorkStyleSize" class="custom-select">
-              <option value="newYorkStyleLarge">Large ($16.99)</option>
-              <option value="newYorkStyleXL">Extra Large ($19.99)</option>
+              <option value="16.99">Large ($16.99)</option>
+              <option value="19.99">Extra Large ($19.99)</option>
             </select>
           </div>
         </div>
@@ -347,7 +340,7 @@
               name="glutenFreeSize"
               class="custom-select"
             >
-              <option value="glutenFreeSmall">Small ($10.99)</option>
+              <option value="10.99">Small ($10.99)</option>
             </select>
           </div>
         </div>
@@ -358,10 +351,10 @@
           >
           <div class="col-8">
             <select id="cheese" name="cheese" class="custom-select">
-              <option value="light">Light: No Charge</option>
-              <option value="normal">Normal (default): No Charge</option>
-              <option value="extra">Extra: +$2.99</option>
-              <option value="double">Double: +3.99</option>
+              <option value="0">Light: No Charge</option>
+              <option value="0">Normal (default): No Charge</option>
+              <option value="2.99">Extra: +$2.99</option>
+              <option value="3.99">Double: +3.99</option>
             </select>
           </div>
         </div>
@@ -371,9 +364,9 @@
           >
           <div class="col-8">
             <select id="sauce" name="sauce" class="custom-select">
-              <option value="regularTomato">Regular Tomato: No Charge</option>
-              <option value="heartyTomato">Hearty Tomato: +$0.99</option>
-              <option value="bbq">BBQ Sauce: +$1.99</option>
+              <option value="0">Regular Tomato: No Charge</option>
+              <option value="0">Hearty Tomato: +$0.99</option>
+              <option value="1.99">BBQ Sauce: +$1.99</option>
             </select>
           </div>
         </div>
@@ -387,7 +380,7 @@
                 id="additionalToppings_0"
                 type="checkbox"
                 class="custom-control-input"
-                value="pepperoni"
+                value=".99"
               />
               <label for="additionalToppings_0" class="custom-control-label"
                 >Pepperoni</label
@@ -399,7 +392,7 @@
                 id="additionalToppings_1"
                 type="checkbox"
                 class="custom-control-input"
-                value="Sausage"
+                value=".99"
               />
               <label for="additionalToppings_1" class="custom-control-label"
                 >Sausage</label
@@ -411,7 +404,7 @@
                 id="additionalToppings_2"
                 type="checkbox"
                 class="custom-control-input"
-                value="ham"
+                value=".99"
               />
               <label for="additionalToppings_2" class="custom-control-label"
                 >Ham</label
@@ -423,7 +416,7 @@
                 id="additionalToppings_3"
                 type="checkbox"
                 class="custom-control-input"
-                value="bacon"
+                value=".99"
               />
               <label for="additionalToppings_3" class="custom-control-label"
                 >Bacon</label
@@ -435,7 +428,7 @@
                 id="additionalToppings_4"
                 type="checkbox"
                 class="custom-control-input"
-                value="salami"
+                value=".99"
               />
               <label for="additionalToppings_4" class="custom-control-label"
                 >Salami</label
@@ -447,7 +440,7 @@
                 id="additionalToppings_5"
                 type="checkbox"
                 class="custom-control-input"
-                value="peppers"
+                value=".99"
               />
               <label for="additionalToppings_5" class="custom-control-label"
                 >Peppers</label
@@ -459,7 +452,7 @@
                 id="additionalToppings_6"
                 type="checkbox"
                 class="custom-control-input"
-                value="olives"
+                value=".99"
               />
               <label for="additionalToppings_6" class="custom-control-label"
                 >Olives</label
@@ -471,7 +464,7 @@
                 id="additionalToppings_7"
                 type="checkbox"
                 class="custom-control-input"
-                value="jalapenos"
+                value=".99"
               />
               <label for="additionalToppings_7" class="custom-control-label"
                 >Jalapenos</label
@@ -483,7 +476,7 @@
                 id="additionalToppings_8"
                 type="checkbox"
                 class="custom-control-input"
-                value="mushrooms"
+                value=".99"
               />
               <label for="additionalToppings_8" class="custom-control-label"
                 >Mushrooms</label
@@ -495,7 +488,7 @@
                 id="additionalToppings_9"
                 type="checkbox"
                 class="custom-control-input"
-                value="pineapple"
+                value=".99"
               />
               <label for="additionalToppings_9" class="custom-control-label"
                 >Pineapple</label
@@ -507,7 +500,7 @@
                 id="additionalToppings_10"
                 type="checkbox"
                 class="custom-control-input"
-                value="onion"
+                value=".99"
               />
               <label for="additionalToppings_10" class="custom-control-label"
                 >Onion</label

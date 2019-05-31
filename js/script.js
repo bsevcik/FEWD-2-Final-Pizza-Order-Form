@@ -10,7 +10,7 @@ function priceOfSize() {
     if (previousDoughAndSize != undefined) {
         var placeholder = document.getElementById(previousDoughAndSize).options;
             for (var i = 0; i < placeholder.length; i++) {
-                if placeholder[i].selected == true {
+                if (placeholder[i].selected == true) {
                     sizePrice = placeholder[i].value;
                 }
             }
@@ -20,6 +20,17 @@ function priceOfSize() {
 
     }    
     return sizePrice;
+}
+
+function priceOfSauce() {
+    var saucePrice = 0, placeholder;
+    
+    previousDoughPickIndex
+}
+
+function priceOfToppings() {
+    var toppingsPrice = 0;
+
 }
 
 function whichDoughPicked () {
