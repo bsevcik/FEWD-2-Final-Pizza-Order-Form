@@ -90,7 +90,7 @@
 -->
 
       <!-- Delivery Form -->
-      <form id="deliveryForm">
+      <form id="deliveryForm" class="hidden">
         <div class="form-group row">
           <label for="name" class="col-4 col-form-label">Your Name</label>
           <div class="col-8">
@@ -290,6 +290,22 @@
           </div>
         </div>
         <div class="form-group row hidden seeThrough calculate">
+          <label for="size" class="col-4 col-form-label"
+            >Size</label
+          >
+          <div class="col-8">
+            <select
+              id="size"
+              name="size"
+              class="custom-select"
+            >
+              <!-- <option value="9.99">Small ($9.99)</option>
+              <option value="11.99">Medium ($11.99)</option>
+              <option value="14.99">Large ($14.99)</option> -->
+            </select>
+          </div>
+        </div>
+        <!-- <div class="form-group row hidden seeThrough calculate">
           <label for="handTossedSize" class="col-4 col-form-label"
             >Hand Tossed Size</label
           >
@@ -344,7 +360,7 @@
               <option value="10.99">Small ($10.99)</option>
             </select>
           </div>
-        </div>
+        </div> -->
 
         <div class="form-group row hidden seeThrough calculate">
           <label for="cheeseOptions" class="col-4 col-form-label" id="cheeseOptionsContainer"
