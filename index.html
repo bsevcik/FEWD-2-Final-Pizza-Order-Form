@@ -120,9 +120,9 @@
             </select>
           </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row hidden" id ="otherAddressType">
           <label for="otherAddressType" class="col-4 col-form-label"
-            >Address Type
+            >Other Address Type
           </label>
           <div class="col-8">
             <input
@@ -229,7 +229,7 @@
       <form id="pizzaForm">
         <div class="form-group row">
           <label class="col-4 col-form-label">Dough</label>
-          <div class="col-8" id="doughRadioButtons">
+          <div class="col-8" id="doughRadioButtons" class="calculate">
             <div class="custom-controls-stacked">
               <div class="custom-control custom-radio">
                 <input
@@ -282,13 +282,14 @@
                   value="glutenFree"
                 />
                 <label for="doughPick_3" class="custom-control-label"
-                  >Gluten Free</label
+                  >Gluten Free
+                  </label
                 >
               </div>
             </div>
           </div>
         </div>
-        <div class="form-group row hidden seeThrough">
+        <div class="form-group row hidden seeThrough calculate">
           <label for="handTossedSize" class="col-4 col-form-label"
             >Hand Tossed Size</label
           >
@@ -304,7 +305,7 @@
             </select>
           </div>
         </div>
-        <div class="form-group row hidden seeThrough">
+        <div class="form-group row hidden seeThrough calculate">
           <label for="thinCrustSize" class="col-4 col-form-label"
             >Thin Crust Size</label
           >
@@ -319,7 +320,7 @@
             </select>
           </div>
         </div>
-        <div class="form-group row hidden seeThrough">
+        <div class="form-group row hidden seeThrough calculate">
           <label for="newYorkStyleSize" class="col-4 col-form-label"
             >New York Size</label
           >
@@ -330,7 +331,7 @@
             </select>
           </div>
         </div>
-        <div class="form-group row hidden seeThrough">
+        <div class="form-group row hidden seeThrough calculate">
           <label for="glutenFreeSize" class="col-4 col-form-label"
             >Gluten Free Size</label
           >
@@ -345,7 +346,7 @@
           </div>
         </div>
 
-        <div class="form-group row hidden seeThrough">
+        <div class="form-group row hidden seeThrough calculate">
           <label for="cheeseOptions" class="col-4 col-form-label" id="cheeseOptionsContainer"
             >Cheese Options</label
           >
@@ -358,20 +359,20 @@
             </select>
           </div>
         </div>
-        <div class="form-group row hidden seeThrough" id="sauceOptionsContainer">
+        <div class="form-group row hidden seeThrough calculate" id="sauceOptionsContainer">
           <label for="sauceOptions" class="col-4 col-form-label"
             >Sauce Options</label
           >
           <div class="col-8">
             <select id="sauce" name="sauce" class="custom-select">
               <option value="0">Regular Tomato: No Charge</option>
-              <option value="0">Hearty Tomato: +$0.99</option>
+              <option value=".99">Hearty Tomato: +$0.99</option>
               <option value="1.99">BBQ Sauce: +$1.99</option>
             </select>
           </div>
         </div>
 
-        <div class="form-group row hidden seeThrough" id="additionalToppingsContainer">
+        <div class="form-group row hidden seeThrough calculate" id="additionalToppingsContainer">
           <label class="col-4">Additional Toppings (+$0.99 each)</label>
           <div class="col-8">
             <div class="custom-control custom-checkbox custom-control-inline">

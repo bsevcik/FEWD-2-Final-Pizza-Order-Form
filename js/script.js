@@ -2,9 +2,11 @@ var runningTotalVar = 0, selectedDough, previousDoughAndSize, previousDoughPickI
 
 function runningTotal() {
     // runningTotalVar = ; HAVE TO ADD THE OTHER TOTALS HERE
-    var sizePrice = priceOfSize();
-    runningTotalVar = sizePrice;
-    document.getElementById("runningTotal").innerHTML = "$" + runningTotalVar;
+    var sizePrice = Number(priceOfSize());
+    var saucePrice = Number(priceOfSauce());
+    var toppingsPrice = Number(priceOfToppings());
+    runningTotalVar = Number(sizePrice) + Number(saucePrice) + Number(toppingsPrice);
+    document.getElementById("runningTotal").innerHTML = "$" + runningTotalVar.toFixed(2);
 }
 
 function priceOfSize() {
@@ -26,13 +28,25 @@ function priceOfSize() {
 
 function priceOfSauce() {
     var saucePrice = 0, placeholder;
-
-    previousDoughPickIndex
+    placeholder = document.getElementById("sauce");
+    for (var i = 0; i < placeholder.length; i++) {
+        if (document.getElementById("sauce")[i].selected) {
+            saucePrice = document.getElementById("sauce")[i].value;
+        }
+    }
+    return saucePrice;
 }
 
 function priceOfToppings() {
-    var toppingsPrice = 0;
-
+    var toppingsPrice = 0, placeholder, counter = 0;
+    placeholder = document.getElementsByName("additionalToppings");
+    for (var i = 0; i < placeholder.length; i++) {
+        if (placeholder[i].checked) {
+            counter += 1;
+        }
+    }
+    toppingsPrice = Number(.99 * counter);
+    return toppingsPrice;
 }
 
 function whichDoughPicked () {
@@ -55,7 +69,7 @@ function whichDoughPicked () {
             document.getElementById("cheeseOptionsContainer").classList.remove("seeThrough");
             document.getElementById("sauceOptionsContainer").classList.remove("seeThrough");
             document.getElementById("additionalToppingsContainer").classList.remove("seeThrough");
-            
+
             //
             previousDoughPickIndex = i;
             previousDoughAndSize = placeholder;
@@ -84,8 +98,43 @@ window.document.getElementById("doughRadioButtons").addEventListener("click",
     }
 );
 
-window.document.getElementById("handTossedSize").addEventListener("click", 
-    function(e) {
-        console.log(e.srcElement);
+var pizzaSizes = {
+    handTossed: {
+        "Small ($9.99)": 9.99,
+        "Medium ($12.99)": 12.99,
+        "Large (14.99)": 14.99
+    },
+    thinCrust: {
+        "Medium ($11.99)": 11.99,
+        "Large (13.99)": 13.99
+    },
+    newYork: {
+        "Large (16.99)": 16.99,
+        "Extra-Large (19.99)": 19.99
+    },
+    glutenFree: {
+        "Small ($10.99)": 10.99
     }
-);
+}
+
+window.addEventListener("load", function() {
+    document.getElementById("addressType").addEventListener("change", function() {
+        //hardcoded the other option in, will have to change this if the html for address type changes
+        if (document.getElementById("addressType")[6].selected) {
+            document.getElementById("otherAddressType").classList.remove("hidden"); 
+        } else {
+            document.getElementById("otherAddressType").classList.add("hidden");
+        }
+    })
+    
+    // select all elements of pizza selection from DOM and add event listeners so that price can be added up
+    var whatToCalculate = document.getElementsByClassName("calculate");
+    for (var i = 0; i < whatToCalculate.length; i++) {
+        whatToCalculate[i].addEventListener("change",
+        function(e) {
+            console.log(e.srcElement);
+            whichDoughPicked();
+        }
+        )
+    }
+})
