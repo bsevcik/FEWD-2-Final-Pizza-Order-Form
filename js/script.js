@@ -1,11 +1,30 @@
 var runningTotalVar = 0, selectedDough, previousDoughAndSize, previousDoughPickIndex = false;
+var pizzaSizes = {
+    handTossed: {
+        "Small ($9.99)": 9.99,
+        "Medium ($12.99)": 12.99,
+        "Large (14.99)": 14.99
+    },
+    thinCrust: {
+        "Medium ($11.99)": 11.99,
+        "Large (13.99)": 13.99
+    },
+    newYorkStyle: {
+        "Large (16.99)": 16.99,
+        "Extra-Large (19.99)": 19.99
+    },
+    glutenFree: {
+        "Small ($10.99)": 10.99
+    }
+}
 
 function runningTotal() {
     // runningTotalVar = ; HAVE TO ADD THE OTHER TOTALS HERE
     var sizePrice = Number(priceOfSize());
+    var cheesePrice = Number(priceOfCheese());
     var saucePrice = Number(priceOfSauce());
     var toppingsPrice = Number(priceOfToppings());
-    runningTotalVar = Number(sizePrice) + Number(saucePrice) + Number(toppingsPrice);
+    runningTotalVar = Number(sizePrice) + Number(cheesePrice) + Number(saucePrice) + Number(toppingsPrice);
     document.getElementById("runningTotal").innerHTML = "$" + runningTotalVar.toFixed(2);
 }
 
@@ -24,6 +43,17 @@ function priceOfSize() {
 
     }    
     return sizePrice;
+}
+
+function priceOfCheese() {
+    var cheesePrice = 0, placeholder;
+    placeholder = document.getElementById("cheese");
+    for (var i = 0; i < placeholder.length; i++) {
+        if (document.getElementById("cheese")[i].selected) {
+            cheesePrice = document.getElementById("cheese")[i].value;
+        }
+    }
+    return cheesePrice;
 }
 
 function priceOfSauce() {
@@ -162,7 +192,7 @@ function whichDoughPicked (e) {
 window.document.getElementById("doughRadioButtons").addEventListener("click", 
     function (e) {
         if (previousDoughPickIndex !== false && e.srcElement.id !== "") {
-            var confirmChange = window.confirm("Are you sure you want to change your Dough Selection?\rSize options change depending on the dough so you may need to select the size again.");
+            var confirmChange = window.confirm("Are you sure you want to change your Dough Selection?\rSize options and prices change depending on the dough so you may need to select the size again.");
             if (confirmChange == true) {
                 whichDoughPicked(e);
             }
@@ -184,35 +214,17 @@ window.document.getElementById("doughRadioButtons").addEventListener("click",
 
 
 
-var pizzaSizes = {
-    handTossed: {
-        "Small ($9.99)": 9.99,
-        "Medium ($12.99)": 12.99,
-        "Large (14.99)": 14.99
-    },
-    thinCrust: {
-        "Medium ($11.99)": 11.99,
-        "Large (13.99)": 13.99
-    },
-    newYorkStyle: {
-        "Large (16.99)": 16.99,
-        "Extra-Large (19.99)": 19.99
-    },
-    glutenFree: {
-        "Small ($10.99)": 10.99
-    }
-}
 
-function x () {
-	var x = document.getElementsByName("doughPick");
-	for (var i = 0; i < x.length; i++) {
-    	if (x[i].checked) {
-            var y = x[i].value;
-            console.log(pizzaSizes[y]);
-            return x[i].value;
-		}
-	}
-}
+// function x () {
+// 	var x = document.getElementsByName("doughPick");
+// 	for (var i = 0; i < x.length; i++) {
+//     	if (x[i].checked) {
+//             var y = x[i].value;
+//             console.log(pizzaSizes[y]);
+//             return x[i].value;
+// 		}
+// 	}
+// }
 
 
 
@@ -253,4 +265,10 @@ window.addEventListener("load", function() {
         }
         )
     }
+
+    document.getElementById("continueToPizzaSelection").addEventListener("click", function() {
+        //hardcoded the other option in, will have to change this if the html for address type changes
+        document.getElementById("deliveryForm").classList.add("hidden");
+        document.getElementById("pizzaForm").classList.remove("hidden");
+    })
 })

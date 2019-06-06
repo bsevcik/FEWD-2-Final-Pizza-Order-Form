@@ -90,7 +90,7 @@
 -->
 
       <!-- Delivery Form -->
-      <form id="deliveryForm" class="hidden">
+      <form id="deliveryForm" class="">
         <div class="form-group row">
           <label for="name" class="col-4 col-form-label">Your Name</label>
           <div class="col-8">
@@ -218,7 +218,7 @@
         </div>
         <div class="form-group row">
           <div class="offset-4 col-8">
-            <button name="submit" type="submit" class="btn btn-primary">
+            <button name="button" type="button" class="btn btn-primary" id="continueToPizzaSelection">
               Continue to Pizza Selection
             </button>
           </div>
@@ -226,7 +226,7 @@
       </form>
 
       <!-- Dough and Size Form -->
-      <form id="pizzaForm">
+      <form id="pizzaForm" class="hidden">
         <div class="form-group row">
           <label class="col-4 col-form-label">Dough</label>
           <div class="col-8" id="doughRadioButtons" class="calculate">
@@ -362,14 +362,14 @@
           </div>
         </div> -->
 
-        <div class="form-group row hidden seeThrough calculate">
-          <label for="cheeseOptions" class="col-4 col-form-label" id="cheeseOptionsContainer"
+        <div class="form-group row hidden seeThrough calculate" id="cheeseOptionsContainer">
+          <label for="cheeseOptions" class="col-4 col-form-label" 
             >Cheese Options</label
           >
           <div class="col-8">
             <select id="cheese" name="cheese" class="custom-select">
               <option value="0">Light: No Charge</option>
-              <option value="0">Normal (default): No Charge</option>
+              <option value="0" selected="selected">Normal (default): No Charge</option>
               <option value="2.99">Extra: +$2.99</option>
               <option value="3.99">Double: +3.99</option>
             </select>
@@ -527,7 +527,7 @@
         </div>
         <div class="form-group row hidden" id="finishBuildingPizzaContainer">
             <div class="offset-4 col-8">
-              <button name="submit" type="submit" class="btn btn-primary">
+              <button name="button" type="button" class="btn btn-primary" id="finishBuildingPizzaButton">
                 Finished Building Pizza
               </button>
             </div>
