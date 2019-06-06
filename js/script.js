@@ -205,30 +205,6 @@ window.document.getElementById("doughRadioButtons").addEventListener("click",
     }
 );
 
-// Credit for this formula goes to https://gist.github.com/DiegoSalazar/4075533
-function valid_credit_card(value) {
-    // accept only digits, dashes or spaces
-      if (/[^0-9-\s]+/.test(value)) return false;
-  
-      // The Luhn Algorithm. It's so pretty.
-      var nCheck = 0, nDigit = 0, bEven = false;
-      value = value.replace(/\D/g, "");
-  
-      for (var n = value.length - 1; n >= 0; n--) {
-          var cDigit = value.charAt(n),
-                nDigit = parseInt(cDigit, 10);
-  
-          if (bEven) {
-              if ((nDigit *= 2) > 9) nDigit -= 9;
-          }
-  
-          nCheck += nDigit;
-          bEven = !bEven;
-      }
-  
-      return (nCheck % 10) == 0;
-  }
-
 window.addEventListener("load", function() {
     //address type listener
     document.getElementById("addressType").addEventListener("change", function() {
@@ -359,3 +335,22 @@ window.addEventListener("load", function() {
 
 })
 
+function luhnValidator(cardNumber) {
+    var placeholder, addUp = 0;
+    cardNumber = cardNumber.toString().split("");
+	for (var i = 0; i < cardNumber.length; i++) {
+			if (i % 2 === 0 && cardNumber[i] < 5) {
+			    addUp += (Number(cardNumber[i]) * 2);
+            } else if (i % 2 === 0) {
+                placeholder = (Number(cardNumber[i]) * 2).toString().split("");
+                addUp += Number(placeholder[0]) + Number(placeholder[1]);
+            } else if (i % 2 !== 0) {
+                addUp += (Number(cardNumber[i]));
+            }
+    }
+    if (addUp % 10 === 0) {
+        return true;
+    } else {
+        return false;
+    }
+}

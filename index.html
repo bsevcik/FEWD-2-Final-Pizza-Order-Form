@@ -535,6 +535,427 @@
           </div>
       </form>
 
+
+
+          <form id="pizzaForm" class="hidden">
+        <div class="form-group row">
+          <label class="col-4 col-form-label">Dough</label>
+          <div class="col-8" id="doughRadioButtons" class="calculate">
+            <div class="custom-controls-stacked">
+              <div class="custom-control custom-radio">
+                <input
+                  name="doughPick"
+                  id="doughPick_0"
+                  type="radio"
+                  class="custom-control-input"
+                  value="handTossed"
+                />
+                <label for="doughPick_0" class="custom-control-label"
+                  >Hand Tossed</label
+                >
+              </div>
+            </div>
+            <div class="custom-controls-stacked">
+              <div class="custom-control custom-radio">
+                <input
+                  name="doughPick"
+                  id="doughPick_1"
+                  type="radio"
+                  class="custom-control-input"
+                  value="thinCrust"
+                />
+                <label for="doughPick_1" class="custom-control-label"
+                  >Thin Crust</label
+                >
+              </div>
+            </div>
+            <div class="custom-controls-stacked">
+              <div class="custom-control custom-radio">
+                <input
+                  name="doughPick"
+                  id="doughPick_2"
+                  type="radio"
+                  class="custom-control-input"
+                  value="newYorkStyle"
+                />
+                <label for="doughPick_2" class="custom-control-label"
+                  >New York Style</label
+                >
+              </div>
+            </div>
+            <div class="custom-controls-stacked">
+              <div class="custom-control custom-radio">
+                <input
+                  name="doughPick"
+                  id="doughPick_3"
+                  type="radio"
+                  class="custom-control-input"
+                  value="glutenFree"
+                />
+                <label for="doughPick_3" class="custom-control-label"
+                  >Gluten Free
+                  </label
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row hidden seeThrough calculate">
+          <label for="size" class="col-4 col-form-label"
+            >Size</label
+          >
+          <div class="col-8">
+            <select
+              id="size"
+              name="size"
+              class="custom-select"
+            >
+              <!-- <option value="9.99">Small ($9.99)</option>
+              <option value="11.99">Medium ($11.99)</option>
+              <option value="14.99">Large ($14.99)</option> -->
+            </select>
+          </div>
+        </div>
+        <!-- <div class="form-group row hidden seeThrough calculate">
+          <label for="handTossedSize" class="col-4 col-form-label"
+            >Hand Tossed Size</label
+          >
+          <div class="col-8">
+            <select
+              id="handTossedSize"
+              name="handTossedSize"
+              class="custom-select"
+            >
+              <option value="9.99">Small ($9.99)</option>
+              <option value="11.99">Medium ($11.99)</option>
+              <option value="14.99">Large ($14.99)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row hidden seeThrough calculate">
+          <label for="thinCrustSize" class="col-4 col-form-label"
+            >Thin Crust Size</label
+          >
+          <div class="col-8">
+            <select
+              id="thinCrustSize"
+              name="thinCrustSize"
+              class="custom-select"
+            >
+              <option value="11.99">Medium (11.99)</option>
+              <option value="13.99">Large ($13.99)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row hidden seeThrough calculate">
+          <label for="newYorkStyleSize" class="col-4 col-form-label"
+            >New York Size</label
+          >
+          <div class="col-8">
+            <select id="newYorkStyleSize" name="newYorkStyleSize" class="custom-select">
+              <option value="16.99">Large ($16.99)</option>
+              <option value="19.99">Extra Large ($19.99)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row hidden seeThrough calculate">
+          <label for="glutenFreeSize" class="col-4 col-form-label"
+            >Gluten Free Size</label
+          >
+          <div class="col-8">
+            <select
+              id="glutenFreeSize"
+              name="glutenFreeSize"
+              class="custom-select"
+            >
+              <option value="10.99">Small ($10.99)</option>
+            </select>
+          </div>
+        </div> -->
+
+        <div class="form-group row hidden seeThrough calculate" id="cheeseOptionsContainer">
+          <label for="cheeseOptions" class="col-4 col-form-label" 
+            >Cheese Options</label
+          >
+          <div class="col-8">
+            <select id="cheese" name="cheese" class="custom-select">
+              <option value="0">Light: No Charge</option>
+              <option value="0" selected="selected">Normal (default): No Charge</option>
+              <option value="2.99">Extra: +$2.99</option>
+              <option value="3.99">Double: +3.99</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row hidden seeThrough calculate" id="sauceOptionsContainer">
+          <label for="sauceOptions" class="col-4 col-form-label"
+            >Sauce Options</label
+          >
+          <div class="col-8">
+            <select id="sauce" name="sauce" class="custom-select">
+              <option value="0">Regular Tomato: No Charge</option>
+              <option value=".99">Hearty Tomato: +$0.99</option>
+              <option value="1.99">BBQ Sauce: +$1.99</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row hidden seeThrough calculate" id="additionalToppingsContainer">
+          <label class="col-4">Additional Toppings (+$0.99 each)</label>
+          <div class="col-8">
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input
+                name="additionalToppings"
+                id="additionalToppings_0"
+                type="checkbox"
+                class="custom-control-input"
+                value=".99"
+              />
+              <label for="additionalToppings_0" class="custom-control-label"
+                >Pepperoni</label
+              >
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input
+                name="additionalToppings"
+                id="additionalToppings_1"
+                type="checkbox"
+                class="custom-control-input"
+                value=".99"
+              />
+              <label for="additionalToppings_1" class="custom-control-label"
+                >Sausage</label
+              >
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input
+                name="additionalToppings"
+                id="additionalToppings_2"
+                type="checkbox"
+                class="custom-control-input"
+                value=".99"
+              />
+              <label for="additionalToppings_2" class="custom-control-label"
+                >Ham</label
+              >
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input
+                name="additionalToppings"
+                id="additionalToppings_3"
+                type="checkbox"
+                class="custom-control-input"
+                value=".99"
+              />
+              <label for="additionalToppings_3" class="custom-control-label"
+                >Bacon</label
+              >
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input
+                name="additionalToppings"
+                id="additionalToppings_4"
+                type="checkbox"
+                class="custom-control-input"
+                value=".99"
+              />
+              <label for="additionalToppings_4" class="custom-control-label"
+                >Salami</label
+              >
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input
+                name="additionalToppings"
+                id="additionalToppings_5"
+                type="checkbox"
+                class="custom-control-input"
+                value=".99"
+              />
+              <label for="additionalToppings_5" class="custom-control-label"
+                >Peppers</label
+              >
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input
+                name="additionalToppings"
+                id="additionalToppings_6"
+                type="checkbox"
+                class="custom-control-input"
+                value=".99"
+              />
+              <label for="additionalToppings_6" class="custom-control-label"
+                >Olives</label
+              >
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input
+                name="additionalToppings"
+                id="additionalToppings_7"
+                type="checkbox"
+                class="custom-control-input"
+                value=".99"
+              />
+              <label for="additionalToppings_7" class="custom-control-label"
+                >Jalapenos</label
+              >
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input
+                name="additionalToppings"
+                id="additionalToppings_8"
+                type="checkbox"
+                class="custom-control-input"
+                value=".99"
+              />
+              <label for="additionalToppings_8" class="custom-control-label"
+                >Mushrooms</label
+              >
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input
+                name="additionalToppings"
+                id="additionalToppings_9"
+                type="checkbox"
+                class="custom-control-input"
+                value=".99"
+              />
+              <label for="additionalToppings_9" class="custom-control-label"
+                >Pineapple</label
+              >
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input
+                name="additionalToppings"
+                id="additionalToppings_10"
+                type="checkbox"
+                class="custom-control-input"
+                value=".99"
+              />
+              <label for="additionalToppings_10" class="custom-control-label"
+                >Onion</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="form-group row hidden" id="finishBuildingPizzaContainer">
+            <div class="offset-4 col-8">
+              <button name="button" type="button" class="btn btn-primary" id="finishBuildingPizzaButton">
+                Finished Building Pizza
+              </button>
+            </div>
+          </div>
+      </form>
+
+
+
+<!-- Billing Form -->
+<form id="billingForm" class="">
+  <div class="col-8 offset-2" id="billingHeader"><h1>Billing Information</h1></div>
+  <div class="col-8 offset-2" id="billingErrorContainer"></div>
+  
+  <div class="form-group row" id="sameAsDeliveryInformationContainer">
+    <!-- <label class="col-4">Same As Delivery Information</label> -->
+    <div class="col-8 offset-4">
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input
+          name="sameAsDeliveryInformation"
+          id="sameAsDeliveryInformation"
+          type="checkbox"
+          class="custom-control-input"
+          value=""
+        />
+        <label for="billingForm_0" class="custom-control-label"
+          >Same As Delivery Information</label
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="name" class="col-4 col-form-label">Your Name</label>
+    <div class="col-8">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <i class="fa fa-address-card"></i>
+          </div>
+        </div>
+        <input id="name" name="name" type="text" class="form-control" />
+      </div>
+    </div>
+  </div>
+  <div class="form-group row hidden" id ="otherAddressTypeContainer">
+    <label for="otherAddressType" class="col-4 col-form-label"
+      >Other Address Type
+    </label>
+    <div class="col-8">
+      <input
+        id="otherAddressType"
+        name="otherAddressType"
+        placeholder="Type Your Address Type Here"
+        type="text"
+        class="form-control"
+      />
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="streetAddress" class="col-4 col-form-label"
+      >Street Address
+    </label>
+    <div class="col-8">
+      <input
+        id="streetAddress"
+        name="streetAddress"
+        type="text"
+        class="form-control"
+      />
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="text" class="col-4 col-form-label"
+      >APT, STE, or Room Number
+    </label>
+    <div class="col-8">
+      <input
+        id="text"
+        name="text"
+        type="text"
+        class="form-control"
+        aria-describedby="textHelpBlock"
+      />
+      <span id="textHelpBlock" class="form-text text-muted"
+        >*Optional Field
+      </span>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="city" class="col-4 col-form-label">City</label>
+    <div class="col-8">
+      <input id="city" name="city" type="text" class="form-control"/>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="state" class="col-4 col-form-label">State</label>
+    <div class="col-8">
+      <input id="state" name="state" type="text" class="form-control" placeholder="Only Two Letter State Codes Ex: CA" />
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="zip" class="col-4 col-form-label">Zip Code</label>
+    <div class="col-8">
+      <input id="zip" name="zip" type="text" class="form-control" />
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="offset-4 col-8">
+      <button name="button" type="button" class="btn btn-primary" id="continueToPizzaSelection">
+        Continue to Pizza Selection
+      </button>
+    </div>
+  </div>
+</form>
+
+
+
       <footer class="footer">
         <p>&copy; Ben's Pizza 2019</p>
       </footer>

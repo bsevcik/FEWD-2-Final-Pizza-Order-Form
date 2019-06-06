@@ -1,7 +1,9 @@
 body {
     min-width: 400px;
 }
-
+h1 {
+    text-align: center;
+}
 .fa-pizza-slice {
     color: red;
 }
