@@ -341,20 +341,21 @@ window.addEventListener("load", function() {
         }
 
         errorMessage += "</ul>"
-
-
         document.getElementById("errorContainer").innerHTML = errorMessage;
         document.getElementById("errorContainer").classList.remove("hidden");
-        window.document.scrollTop
+        
+        //if it's passed all the validation steps, confirm to move on then move on
         if (errorMessage.indexOf("<li>") === -1) {
             document.getElementById("errorContainer").classList.add("hidden");
-            document.getElementById("deliveryForm").classList.add("hidden");
-            document.getElementById("pizzaForm").classList.remove("hidden");
-            document.getElementById("runningTotalContainer").classList.remove("hidden");
-
+            if (window.confirm("Are you sure you want to move on?\rIf you want to change any of your information later you will have to restart the order proccess.")) {
+                document.getElementById("deliveryForm").classList.add("hidden");
+                document.getElementById("pizzaForm").classList.remove("hidden");
+                document.getElementById("runningTotalContainer").classList.remove("hidden");
+            }
         }
     })
 
 
 
 })
+
