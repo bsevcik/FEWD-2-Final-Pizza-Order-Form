@@ -44,6 +44,13 @@ footer {
 #cheeseOptionsContainer, #sauceOptionsContainer, #sizeOptionsContainer {
     transition: height 2s;
 }
-.formError {
-    border: red;
+#errorContainer {
+    border: 1px solid red;
+    margin-bottom: 10px;
+}
+#errorContainer h1 {
+    text-align: center;
+}
+.errorInput {
+    border: 1px solid red;
 }

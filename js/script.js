@@ -205,53 +205,38 @@ window.document.getElementById("doughRadioButtons").addEventListener("click",
     }
 );
 
-
-
-
-
-
-
-
-
-
-
-// function x () {
-// 	var x = document.getElementsByName("doughPick");
-// 	for (var i = 0; i < x.length; i++) {
-//     	if (x[i].checked) {
-//             var y = x[i].value;
-//             console.log(pizzaSizes[y]);
-//             return x[i].value;
-// 		}
-// 	}
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Credit for this formula goes to https://gist.github.com/DiegoSalazar/4075533
+function valid_credit_card(value) {
+    // accept only digits, dashes or spaces
+      if (/[^0-9-\s]+/.test(value)) return false;
+  
+      // The Luhn Algorithm. It's so pretty.
+      var nCheck = 0, nDigit = 0, bEven = false;
+      value = value.replace(/\D/g, "");
+  
+      for (var n = value.length - 1; n >= 0; n--) {
+          var cDigit = value.charAt(n),
+                nDigit = parseInt(cDigit, 10);
+  
+          if (bEven) {
+              if ((nDigit *= 2) > 9) nDigit -= 9;
+          }
+  
+          nCheck += nDigit;
+          bEven = !bEven;
+      }
+  
+      return (nCheck % 10) == 0;
+  }
 
 window.addEventListener("load", function() {
     //address type listener
     document.getElementById("addressType").addEventListener("change", function() {
         //hardcoded the other option in, will have to change this if the html for address type changes
         if (document.getElementById("addressType")[6].selected) {
-            document.getElementById("otherAddressType").classList.remove("hidden"); 
+            document.getElementById("otherAddressTypeContainer").classList.remove("hidden"); 
         } else {
-            document.getElementById("otherAddressType").classList.add("hidden");
+            document.getElementById("otherAddressTypeContainer").classList.add("hidden");
         }
     })
     
@@ -266,9 +251,110 @@ window.addEventListener("load", function() {
         )
     }
 
+    // handle delivery form errors or continue to pizza selection
     document.getElementById("continueToPizzaSelection").addEventListener("click", function() {
-        //hardcoded the other option in, will have to change this if the html for address type changes
-        document.getElementById("deliveryForm").classList.add("hidden");
-        document.getElementById("pizzaForm").classList.remove("hidden");
+        //The error message will have a list of issues. If there's no list items it'll get hidden
+        var errorMessage = "<h1>Error!</h1><p>Please fix the following issues so we can deliver your pizza!</p><ul>";
+        //name field is weird because it can error for being blank or for having invalid characters
+        if (document.getElementById("name").value === "") {
+            errorMessage += "<li>Name Field Not Filled In</li>";
+            document.getElementById("name").classList.add("errorInput");
+        } else {
+            document.getElementById("name").classList.remove("errorInput");
+        }
+        if (document.getElementById("name").value.match(/[^A-Z^a-z\s]/) !== null) {
+            errorMessage += "<li>Name field has an invalid character. Only letters are allowed</li>";
+            document.getElementById("name").classList.add("errorInput");
+        } else if (document.getElementById("name").value !== "") {
+            document.getElementById("name").classList.remove("errorInput");
+        }
+        //street address 
+        if (document.getElementById("streetAddress").value === "") {
+            errorMessage += "<li>Street Address Not Filled In</li>";
+            document.getElementById("streetAddress").classList.add("errorInput");
+        } else {
+            document.getElementById("streetAddress").classList.remove("errorInput");
+        }
+        //other address type only needs validated if it's chosen
+        if (document.getElementById("otherAddressType").value === ""  && document.getElementById("addressType").value === "Other") {
+            errorMessage += "<li>Other Address Type must be filled in </li>";
+            document.getElementById("otherAddressType").classList.add("errorInput");
+        } else {
+            document.getElementById("otherAddressType").classList.remove("errorInput");
+        }
+        //city
+        if (document.getElementById("city").value === "") {
+            errorMessage += "<li>City Not Filled In</li>";
+            document.getElementById("city").classList.add("errorInput");
+        } else {
+            document.getElementById("city").classList.remove("errorInput");
+        }
+        //state must have exactly two letters
+        if (document.getElementById("state").value === "") {
+            errorMessage += "<li>State Not Filled In</li>";
+            document.getElementById("state").classList.add("errorInput");
+        } else if (document.getElementById("state").value.match(/[^A-Z^a-z]/) !== null && document.getElementById("state").value.length !== 2) {
+            errorMessage += "<li>State Field Has An Invalid Non-Letter Character</li><li>State Field Must Have Exactly Two Letters</li>";
+            document.getElementById("state").classList.add("errorInput");
+        } else if (document.getElementById("state").value.match(/[^A-Z^a-z]/) !== null) {
+            errorMessage += "<li>State Field Has An Invalid Non-Letter Character</li>";
+            document.getElementById("state").classList.add("errorInput");
+        } else if (document.getElementById("state").value.length !== 2) {
+            errorMessage += "<li>State Field Must Be Exactly Two Letters</li>";
+            document.getElementById("state").classList.add("errorInput");
+        } else {
+            document.getElementById("state").classList.remove("errorInput");
+        }
+        //zip code, went with one error code for both problems of length and invalid characters
+        if (document.getElementById("zip").value === "") {
+            errorMessage += "<li>Zip Code Not Filled In</li>";
+            document.getElementById("zip").classList.add("errorInput");
+        } else if (document.getElementById("zip").value.match(/[^0-9]/) || document.getElementById("zip").value.length !== 5) {
+            errorMessage += "<li>Zip Code Must Be Exactly Five Numbers</li>";
+            document.getElementById("zip").classList.add("errorInput");
+        } else {
+            document.getElementById("zip").classList.remove("errorInput");
+        }
+        //phone number, it's easiest to just make it 10 digits without () or -
+        if (document.getElementById("phoneNumber").value === "") {
+            errorMessage += "<li>Phone Number Not Filled In</li>";
+            document.getElementById("phoneNumber").classList.add("errorInput");
+        } else if (document.getElementById("phoneNumber").value.match(/[^0-9]/) || document.getElementById("phoneNumber").value.length !== 10) {
+            errorMessage += "<li>Phone Number Must Be Exactly 10 Numbers</li>";
+            document.getElementById("phoneNumber").classList.add("errorInput");
+        } else {
+            document.getElementById("phoneNumber").classList.remove("errorInput");
+        }
+        //email - used the internet for a regex validator for email. Credit to https://tylermcginnis.com/validate-email-address-javascript/
+        var emailPlaceholder = document.getElementById("email").value;
+        function emailIsValid (email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+        }
+        if (document.getElementById("email").value === "") {
+            errorMessage += "<li>Email Not Filled In</li>";
+            document.getElementById("email").classList.add("errorInput");
+        } else if (emailIsValid(emailPlaceholder) !== true) {
+            errorMessage += "<li>Email Is Invalid</li>";
+            document.getElementById("email").classList.add("errorInput");
+        } else {
+            document.getElementById("email").classList.remove("errorInput");
+        }
+
+        errorMessage += "</ul>"
+
+
+        document.getElementById("errorContainer").innerHTML = errorMessage;
+        document.getElementById("errorContainer").classList.remove("hidden");
+        window.document.scrollTop
+        if (errorMessage.indexOf("<li>") === -1) {
+            document.getElementById("errorContainer").classList.add("hidden");
+            document.getElementById("deliveryForm").classList.add("hidden");
+            document.getElementById("pizzaForm").classList.remove("hidden");
+            document.getElementById("runningTotalContainer").classList.remove("hidden");
+
+        }
     })
+
+
+
 })

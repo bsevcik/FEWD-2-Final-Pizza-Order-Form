@@ -59,7 +59,7 @@
         </p>
       </div>
 
-      <div class="runningTotalContainer col-sm-3 offset-sm-9">
+      <div class="runningTotalContainer col-sm-3 offset-sm-9 hidden" id="runningTotalContainer">
         <h1>Total Cost:</h1>
         <p id="runningTotal">$0.00</p>
       </div>
@@ -91,6 +91,7 @@
 
       <!-- Delivery Form -->
       <form id="deliveryForm" class="">
+        <div class="col-8 offset-2 hidden" id="errorContainer"></div>
         <div class="form-group row">
           <label for="name" class="col-4 col-form-label">Your Name</label>
           <div class="col-8">
@@ -120,7 +121,7 @@
             </select>
           </div>
         </div>
-        <div class="form-group row hidden" id ="otherAddressType">
+        <div class="form-group row hidden" id ="otherAddressTypeContainer">
           <label for="otherAddressType" class="col-4 col-form-label"
             >Other Address Type
           </label>
@@ -167,13 +168,13 @@
         <div class="form-group row">
           <label for="city" class="col-4 col-form-label">City</label>
           <div class="col-8">
-            <input id="city" name="city" type="text" class="form-control" />
+            <input id="city" name="city" type="text" class="form-control"/>
           </div>
         </div>
         <div class="form-group row">
           <label for="state" class="col-4 col-form-label">State</label>
           <div class="col-8">
-            <input id="state" name="state" type="text" class="form-control" />
+            <input id="state" name="state" type="text" class="form-control" placeholder="Only Two Letter State Codes Ex: CA" />
           </div>
         </div>
         <div class="form-group row">
@@ -196,7 +197,7 @@
               <input
                 id="phoneNumber"
                 name="phoneNumber"
-                placeholder="(555) 555-5555"
+                placeholder="Type 10 digits with no other characters. Ex: 5555555555"
                 type="text"
                 class="form-control"
               />
