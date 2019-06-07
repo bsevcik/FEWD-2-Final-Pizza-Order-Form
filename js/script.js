@@ -343,7 +343,7 @@ window.addEventListener("load", function() {
         document.getElementById("errorContainer").classList.add("hidden");
         if (
           window.confirm(
-            "Are you sure you want to move on?\rIf you want to change any of your information later you will have to restart the order proccess."
+            "Are you sure you want to move on?\rIf you want to change any of your information later, you will have to restart the order process."
           )
         ) {
           document.getElementById("deliveryForm").classList.add("hidden");
