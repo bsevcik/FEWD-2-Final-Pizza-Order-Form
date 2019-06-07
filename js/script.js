@@ -337,6 +337,7 @@ window.addEventListener("load", function() {
       errorMessage += "</ul>";
       document.getElementById("errorContainer").innerHTML = errorMessage;
       document.getElementById("errorContainer").classList.remove("hidden");
+      window.scrollTo(0,0);
 
       //if it's passed all the validation steps, confirm to move on then move on
       if (errorMessage.indexOf("<li>") === -1) {
@@ -348,9 +349,8 @@ window.addEventListener("load", function() {
         ) {
           document.getElementById("deliveryForm").classList.add("hidden");
           document.getElementById("pizzaForm").classList.remove("hidden");
-          document
-            .getElementById("runningTotalContainer")
-            .classList.remove("hidden");
+          document.getElementById("runningTotalContainer").classList.remove("hidden");
+          window.scrollTo(0,0);
         }
       }
     });
@@ -395,6 +395,7 @@ window.addEventListener("load", function() {
       ) {
         document.getElementById("pizzaForm").classList.add("hidden");
         document.getElementById("billingForm").classList.remove("hidden");
+        window.scrollTo(0,0);
       }
     });
 
@@ -620,6 +621,8 @@ window.addEventListener("load", function() {
       // document.getElementById("pizzaForm").classList.remove("hidden");
       // document.getElementById("runningTotalContainer").classList.remove("hidden");
       // }
+    } else {
+      window.scrollTo(0,0);
     }
   });
 });
